@@ -1,0 +1,562 @@
+
+<html>
+    <head>
+        <title>Project 4, the store</title>
+ 
+        <style>
+            body
+            {
+                background-color: burlywood;
+                color: black;
+                font-family: impact;
+            }
+            table
+            {
+                border: 1px solid orange;
+            }
+            th
+            {
+                border: 10px solid orange;
+            }
+            td
+            {
+                border: 10px solid orange;
+            }
+        </style>
+
+            <img src="CAT.png.jpg" alt="Ham(A girl in yellow drew this)" width="500" height="600"><br>
+        <script>
+            //The items we are selling
+            var itemArray = ["N64 ", "NES ","SNES ","Switch ","Gamecube ", "Wii "]
+            var priceArray = ["$465.11","$499.99","$299","$300","$249.99","$199"]
+            var picArray = ["images/N64.png","images/NES1.png","images/SNES.png","images/SWITCH.png","images/GAMECUBE.png","images/WII.png"];
+            var descriptionArray = ["first console with 3d games","the first console","A souped up NES","The first nintendo Hybrid","Gamecube console","The Wii, uses motion controls"]
+
+            var HightoLow = ["NES","SNES","WII U","Switch","N64","Wii","Gamecube"]
+            var LowtoHigh = ["Gamecube","NES","SNES","Switch","N64","Wii","Wii U"]
+            function OnLoad() {
+  //Initalize our output variable. Start to create put
+                //table object
+                var output = "<table>";
+
+                    //Add a row with the headers needed for each coloumn
+                    output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+ 
+ 
+ 
+                  for(var i=0; i< itemArray.length; i++)
+                  {
+                     //add to your output here
+                     output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                         "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+                  }
+ 
+                  output+= "</table>"
+                  //update our table (idTableItems) with our NEW table (output)
+                   idTableItems.innerHTML = output;
+             
+            }
+            function displayAtoZ() {           
+                var arraySize = itemArray.length;
+ 
+                //If the given array has less then 2 elements, then it's already sorted!
+                if (arraySize < 2)
+                {
+                    return;
+                }
+ 
+                //Keep making passes through the array comparing/swapping adjacent elements.
+                //We do this until we are able to make a pass through the array without
+                //having to make any swaps - since that must mean that the array is sorted
+ 
+                //This variable tracks whether the current pass will be the last one
+                var sortDone;
+ 
+                do
+                {
+                    //Assume that the array is in sorted order, until we
+                    //are proven wrong (i.e. we have to swap elements)
+                    sortDone = true;
+                    for(var i = 0; i < arraySize + 1; i++)
+                    {
+                        if (itemArray[i] > itemArray[i+1])
+                        {
+                            //The array was not in sorted order, so we must
+                            //keep making passes through the array
+                            sortDone = false;
+ 
+                            //Swap the two out-of-order elements
+                            var temp = itemArray[i];
+                            var temp2 = priceArray[i];
+                            var temp3 = descriptionArray[i];
+                            var temp5 = picArray[i]
+                            itemArray[i] = itemArray[i+1];
+                            priceArray[i] = priceArray[i+1];
+                            descriptionArray[i] = descriptionArray[i+1]
+                            picArray[i] = picArray[i+1]
+                            itemArray[i+1] = temp;
+                            priceArray[i+1] = temp2;
+                            descriptionArray[i+1] = temp3
+                            picArray[i+1] = temp5
+ 
+ 
+                        }
+                    }
+                
+                }while (sortDone == false)
+                
+              //table object
+              var output = "<table>";
+
+            //Add a row with the headers needed for each coloumn
+            output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+            for(var i=0; i< itemArray.length; i++)
+            {
+            //add to your output here
+            output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+            }
+
+            output+= "</table>"
+            //update our table (idTableItems) with our NEW table (output)
+            idTableItems.innerHTML = output;
+ 
+    }
+
+    
+            function displayZtoA() {
+                var arraySize = itemArray.length;
+ 
+                //If the given array has less then 2 elements, then it's already sorted!
+                if (arraySize < 2)
+                {
+                    return;
+                }
+ 
+                //Keep making passes through the array comparing/swapping adjacent elements.
+                //We do this until we are able to make a pass through the array without
+                //having to make any swaps - since that must mean that the array is sorted
+ 
+                //This variable tracks whether the current pass will be the last one
+                var sortDone;
+ 
+                do
+                {
+                    //Assume that the array is in sorted order, until we
+                    //are proven wrong (i.e. we have to swap elements)
+                    sortDone = true;
+ 
+                    for(var i = 0; i < arraySize + 1; i++)
+                    {
+                        if (itemArray[i] < itemArray[i+1])
+                        {
+                            //The array was not in sorted order, so we must
+                            //keep making passes through the array
+                            sortDone = false;
+ 
+                            //Swap the two out-of-order elements
+                            var temp = itemArray[i];
+                            var temp2 = priceArray[i];
+                            var temp3 = descriptionArray[i];
+                            var temp5 = picArray[i]
+                            itemArray[i] = itemArray[i+1];
+                            priceArray[i] = priceArray[i+1];
+                            descriptionArray[i] = descriptionArray[i+1]
+                            picArray[i] = picArray[i+1]
+                            itemArray[i+1] = temp;
+                            priceArray[i+1] = temp2;
+                            descriptionArray[i+1] = temp3
+                            picArray[i+1] = temp5
+ 
+ 
+                        }
+                    }
+                
+                }while (sortDone == false)
+                
+                
+              //table object
+              var output = "<table>";
+
+            //Add a row with the headers needed for each coloumn
+            output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+            for(var i=0; i< itemArray.length; i++)
+            {
+            //add to your output here
+            output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+            }
+
+            output+= "</table>"
+            //update our table (idTableItems) with our NEW table (output)
+            idTableItems.innerHTML = output;
+    }
+
+    function displayNumericalLowToHigh()
+            {
+                var arraySize = priceArray.length;
+ 
+                //If the given array has less then 2 elements, then it's already sorted!
+                if (priceArray < 2)
+                {
+                    return;
+                }
+ 
+                //Keep making passes through the array comparing/swapping adjacent elements.
+                //We do this until we are able to make a pass through the array without
+                //having to make any swaps - since that must mean that the array is sorted
+ 
+                //This variable tracks whether the current pass will be the last one
+                var sortDone;
+ 
+                do
+                {
+                    //Assume that the array is in sorted order, until we
+                    //are proven wrong (i.e. we have to swap elements)
+                    sortDone = true;
+ 
+                    for(var i = 0; i < arraySize + 1; i++)
+                    {
+                        if (priceArray[i] > priceArray[i+1])
+                        {
+                            //The array was not in sorted order, so we must
+                            //keep making passes through the array
+                            sortDone = false;
+ 
+                            //Swap the two out-of-order elements
+                            var temp = itemArray[i];
+                            var temp2 = priceArray[i];
+                            var temp3 = descriptionArray[i];
+                            var temp5 = picArray[i]
+                            itemArray[i] = itemArray[i+1];
+                            priceArray[i] = priceArray[i+1];
+                            descriptionArray[i] = descriptionArray[i+1]
+                            picArray[i] = picArray[i+1]
+                            itemArray[i+1] = temp;
+                            priceArray[i+1] = temp2;
+                            descriptionArray[i+1] = temp3
+                            picArray[i+1] = temp5
+ 
+ 
+                        }
+                    }
+                
+                }while (sortDone == false)
+ 
+               
+                
+              //table object
+              var output = "<table>";
+
+            //Add a row with the headers needed for each coloumn
+            output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+            for(var i=0; i< itemArray.length; i++)
+            {
+            //add to your output here
+            output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+            }
+
+            output+= "</table>"
+            //update our table (idTableItems) with our NEW table (output)
+            idTableItems.innerHTML = output;
+            }
+
+    function displayNumericalHighToLow()
+            {
+                var arraySize = priceArray.length;
+ 
+                //If the given array has less then 2 elements, then it's already sorted!
+                if (priceArray < 2)
+                {
+                    return;
+                }
+ 
+                //Keep making passes through the array comparing/swapping adjacent elements.
+                //We do this until we are able to make a pass through the array without
+                //having to make any swaps - since that must mean that the array is sorted
+ 
+                //This variable tracks whether the current pass will be the last one
+                var sortDone;
+ 
+                do
+                {
+                    //Assume that the array is in sorted order, until we
+                    //are proven wrong (i.e. we have to swap elements)
+                    sortDone = true;
+ 
+                    for(var i = 0; i < arraySize + 1; i++)
+                    {
+                        if (priceArray[i] < priceArray[i+1])
+                        {
+                            //The array was not in sorted order, so we must
+                            //keep making passes through the array
+                            sortDone = false;
+ 
+                            //Swap the two out-of-order elements
+                            var temp = itemArray[i];
+                            var temp2 = priceArray[i];
+                            var temp3 = descriptionArray[i];
+                            var temp5 = picArray[i]
+                            itemArray[i] = itemArray[i+1];
+                            priceArray[i] = priceArray[i+1];
+                            descriptionArray[i] = descriptionArray[i+1]
+                            picArray[i] = picArray[i+1]
+                            itemArray[i+1] = temp;
+                            priceArray[i+1] = temp2;
+                            descriptionArray[i+1] = temp3
+                            picArray[i+1] = temp5
+ 
+ 
+                        }
+                    }
+                
+                }while (sortDone == false)
+ 
+                
+                
+              //table object
+              var output = "<table>";
+
+            //Add a row with the headers needed for each coloumn
+            output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+            for(var i=0; i< itemArray.length; i++)
+            {
+            //add to your output here
+            output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+            }
+
+            output+= "</table>"
+            //update our table (idTableItems) with our NEW table (output)
+            idTableItems.innerHTML = output;
+    }
+
+    function Search() {
+        var output = "<table>";
+
+//Add a row with the headers needed for each coloumn
+output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+        for(var i=0; i<itemArray.length; i++){
+            if(idTxtSearchName.value ==itemArray[i]) {
+                output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                         "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+                }        
+            }
+            output+= "</table>";
+
+            idTableItems.innerHTML = output
+
+            var arraySize = priceArray.length;
+ 
+                //If the given array has less then 2 elements, then it's already sorted!
+                if (priceArray < 2)
+                {
+                    return;
+                }
+ 
+                //Keep making passes through the array comparing/swapping adjacent elements.
+                //We do this until we are able to make a pass through the array without
+                //having to make any swaps - since that must mean that the array is sorted
+ 
+                //This variable tracks whether the current pass will be the last one
+                var sortDone;
+ 
+                do
+                {
+                    //Assume that the array is in sorted order, until we
+                    //are proven wrong (i.e. we have to swap elements)
+                    sortDone = true;
+ 
+                    for(var i = 0; i < arraySize + 1; i++)
+                    {
+                        if (priceArray[i] > priceArray[i+1])
+                        {
+                            //The array was not in sorted order, so we must
+                            //keep making passes through the array
+                            sortDone = false;
+ 
+                            //Swap the two out-of-order elements
+                            var temp = itemArray[i];
+                            var temp2 = priceArray[i];
+                            var temp3 = descriptionArray[i];
+                            var temp5 = picArray[i]
+                            itemArray[i] = itemArray[i+1];
+                            priceArray[i] = priceArray[i+1];
+                            descriptionArray[i] = descriptionArray[i+1]
+                            picArray[i] = picArray[i+1]
+                            itemArray[i+1] = temp;
+                            priceArray[i+1] = temp2;
+                            descriptionArray[i+1] = temp3
+                            picArray[i+1] = temp5
+ 
+ 
+                        }
+                    }
+                
+                }while (sortDone == false)
+ 
+               
+                
+              //table object
+              var output = "<table>";
+
+            //Add a row with the headers needed for each coloumn
+            output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+            for(var i=0; i< itemArray.length; i++)
+            {
+            //add to your output here
+            output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+            }
+
+            output+= "</table>"
+            //update our table (idTableItems) with our NEW table (output)
+            idTableItems.innerHTML = output;
+            }
+
+    function displayNumericalHighToLow()
+            {
+                var arraySize = priceArray.length;
+ 
+                //If the given array has less then 2 elements, then it's already sorted!
+                if (priceArray < 2)
+                {
+                    return;
+                }
+ 
+                //Keep making passes through the array comparing/swapping adjacent elements.
+                //We do this until we are able to make a pass through the array without
+                //having to make any swaps - since that must mean that the array is sorted
+ 
+                //This variable tracks whether the current pass will be the last one
+                var sortDone;
+ 
+                do
+                {
+                    //Assume that the array is in sorted order, until we
+                    //are proven wrong (i.e. we have to swap elements)
+                    sortDone = true;
+ 
+                    for(var i = 0; i < arraySize + 1; i++)
+                    {
+                        if (priceArray[i] < priceArray[i+1])
+                        {
+                            //The array was not in sorted order, so we must
+                            //keep making passes through the array
+                            sortDone = false;
+ 
+                            //Swap the two out-of-order elements
+                            var temp = itemArray[i];
+                            var temp2 = priceArray[i];
+                            var temp3 = descriptionArray[i];
+                            var temp5 = picArray[i]
+                            itemArray[i] = itemArray[i+1];
+                            priceArray[i] = priceArray[i+1];
+                            descriptionArray[i] = descriptionArray[i+1]
+                            picArray[i] = picArray[i+1]
+                            itemArray[i+1] = temp;
+                            priceArray[i+1] = temp2;
+                            descriptionArray[i+1] = temp3
+                            picArray[i+1] = temp5
+ 
+ 
+                        }
+                    }
+                
+                }while (sortDone == false)
+ 
+                
+                
+              //table object
+              var output = "<table>";
+
+            //Add a row with the headers needed for each coloumn
+            output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+
+            for(var i=0; i< itemArray.length; i++)
+            {
+            //add to your output here
+            output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+            }
+
+            output+= "</table>"
+            //update our table (idTableItems) with our NEW table (output)
+            idTableItems.innerHTML = output;
+    }
+// JavaScript code
+          //Shows min and max items 
+    function showItemsWithPrices(){
+        //grab onto the min and max price
+        var minPrice = Number(idTxtMinPrice.value)
+        var maxPrice = Number(idTxtMaxPrice.value)
+
+        var output = "<table>";
+
+        //Add a row with the headers needed for each coloumn
+        output += "<tr> <th>Item</th> <th>Price</th> <th>Picture</th> <th>Descripction</th></tr> <br>";
+        for(var i=0; i<itemArray.length; i++){
+            if( priceArray[i]>=minPrice && priceArray[i]<=maxPrice) {
+                output+= "<tr><th>" + itemArray[i] + "</th><th>" + priceArray[i] + "</th><th>"+
+                         "<img src="+picArray[i] + " width=100 height=100>" + "</th><th>" + descriptionArray[i] + "</tr></th>" ;
+                }        
+            }
+            output+= "</table>";
+            idTableItems.innerHTML = output;
+    }
+        </script>
+    </head>
+ 
+    
+    <body onLoad = "OnLoad()">
+
+        <address>
+             <a href="https://patrickvozas@gmail.com">Owners Gmails</a>.<br>
+        </address>
+        <address>
+            <a href="https://docs.google.com/document/d/14BjcWXgVwu8M_va0ho6GXzjIuC96KI522I7UNPAMBPw/edit">Alvin's gmail</a>.<br>
+       </address>
+
+        <br><br>
+ 
+        <input type=text id="idTxtSearchName" placeholder="searching for scam...">
+
+        <input type = "button" id = "idBtnA-Z" value = "Show items with name..." onClick = "Search()">
+        
+        <br><br>
+
+        <input type = "button" id = "idBtnA-Z" value = "Show Alphabetical A-Z" onClick = "displayAtoZ()">
+        <br><br>
+ 
+        <input type = "button" id = "idBtnZ-A" value = "Show Alphabetical Z-A" onClick = "displayZtoA()">
+        <br><br>
+ 
+        <input type = "button" id = "idBtnHightoLow" value = "Show Numerical High to Low" onClick = "displayNumericalHighToLow()">
+        <br><br>
+ 
+        <input type = "button" id = "idBtnLowtoHigh" value = "Show Numerical Low to High" onClick = "displayNumericalLowToHigh()">
+        <br><br>
+        <!-- <input type = "button" id = "idBtnA-Z" value = "" onClick = "Search()">
+        <input type = "button" id = "idBtnA-Z" c onClick = "Search()"> -->
+        <input type="text" id = "idTxtMinPrice">
+        <input type="text" id = "idTxtMaxPrice">
+        <input type = "button" id = "idBtnAZ" value = "ItemsWithPrice" onClick = "showItemsWithPrices()">
+        <!-- idTxtSearchName -->
+        <!-- <input type="text"value = "search" id = "idTxtSearchName"> -->
+ 
+        <div id = "idDivOutput">ABOUT US</div>
+        <div id = "idDivOutput2">WE at Ham Corp, founded in 1975 are working tirelessly over the last 45 minutes to scam...
+            I mean give you the best prices for all your favorite nintendo consoles. We're giving you not one...not two but ZERO games just so you don't get a good deal. 
+            We partnered with Apple to give you the weakest technology so the consoles are so fragile they'll break with the slightest touch(Sorry, but Apple care can't help you if you break your console just don't break it). We hope you enjoy buying our console and it put a smile on your face, 
+            because you spending your hard earned cash on this scam put a smile on our face too. </div>
+ 
+        <table id = "idTableItems"></table>
+    </body>
+</html>
